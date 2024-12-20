@@ -17,7 +17,7 @@ curl --location 'localhost:8080/api/v1/calculate' \
     "expression": "2+2*2"
 }'
 ```
-## Error 402
+## Error 422
 ```
 curl --location 'localhost:8080/api/v1/calculate' \
 --header 'Content-Type: application/json' \
