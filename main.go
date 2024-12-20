@@ -22,7 +22,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	//проверяем на наличие ошибки
 	if err != nil {
-		http.Error(w, "{\"error\": \"Internal server error\"}", http.StatusPaymentRequired)
+		http.Error(w, "{\"error\": \"Internal server error\"}", http.StatusInternalServerError)
 
 		return
 	}
@@ -35,7 +35,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	answer, err := Calc(resp.Expression)
 	if err != nil {
-		http.Error(w, "{\"error\": \"Expression is not valid\"}", http.StatusPaymentRequired)
+		http.Error(w, "{\"error\": \"Expression is not valid\"}", http.StatusUnprocessableEntity)
 		return
 	}
 	json.NewEncoder(w).Encode(map[string]string{"result": fmt.Sprint(answer)})
